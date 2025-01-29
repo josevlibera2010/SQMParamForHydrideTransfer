@@ -1,0 +1,59 @@
+300K constant temp QMMMMD
+ &cntrl
+  imin=0,
+  ntb=1,
+  cut=8.0,
+  ntc=1,
+  ntf=1,
+  tempi=0.0,
+  temp0=300.0,
+  ntt=3,
+  gamma_ln=1.0,
+  ig=XXXXX,
+  nstlim=5000000,
+  dt=0.001,
+  iwrap=1,
+  ntpr=50, 
+  ntwx=300,
+  ntwr=50, 
+  ntxo=2,  
+  ioutfm=1,
+  ifqnt=1, 
+  nmropt=1,
+  asm=1,
+ /
+ &qmmm
+  qmmask='@27426-27457,27609,27662,27663,27658,27622,27653,27623,27625,27624,27663,27694,27693,27691,27692,27690',
+  qmcharge=0,
+  qm_theory='XTB',
+  qmcut=8.0,
+  qmshake=0,
+  qm_pme=1,
+  qm_ewald=1,
+  writepdb=0,
+ /
+&xtb
+ qm_level = 'GFN2-xTB',
+ tfermi = 300.0,
+ accuracy = 1.d-3,
+ maxiter = 25000,
+ !mmhardness = -1.0,
+ debug = F
+/
+&asm
+ dir="results",
+ CV_file="CVs",
+ guess_file="guess_dft",
+ only_PMF=.false.,
+ REX_period=50,
+ output_period=100,
+ preparation_steps=5000,
+ step=0,
+ z_bias=.true.,
+ dump_pathCV_def=.true.,
+ read_pathCV_def=.false.,
+ fix_ends=.true.,
+/
+ &wt type='END' /
+DISANG=restr
+/
